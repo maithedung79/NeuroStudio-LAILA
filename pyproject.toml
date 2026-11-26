@@ -32,3 +32,17 @@ packages = ["src/neurostudio"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["src"]
+
+[tool.ruff]
+target-version = "py312"
+
+[tool.ruff.lint.per-file-ignores]
+"src/**" = ["E401", "E402", "E701", "E702", "E731", "E741"]
+"src/neurostudio/api.py" = ["F401", "F811"]
+"src/neurostudio/compiler.py" = ["F401"]
+"src/neurostudio/offline.py" = ["F401"]
+"src/neurostudio/supervisor.py" = ["F401"]
+"src/neurostudio/engine/data.py" = ["F401"]
+"src/neurostudio/engine/portable.py" = ["F401"]
+"src/neurostudio/engine/preview.py" = ["F401"]
+"src/neurostudio/engine/tasks.py" = ["F401"]
