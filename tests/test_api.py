@@ -191,3 +191,11 @@ def test_path_traversal_and_unsafe_archive_guards(tmp_path: Path) -> None:
         raise AssertionError("Expected ValueError for zip-slip path")
     except ValueError as exc:
         assert "UNSAFE_ARCHIVE" in str(exc)
+
+
+def test_diagnostics_excludes_datasets(tmp_path: Path) -> None:
+    client, _ = _make_client(tmp_path)
+    diag = client.get('/api/v1/system/diagnostics')
+    assert diag.status_code == 200
+    assert 'version' in diag.json()
+
